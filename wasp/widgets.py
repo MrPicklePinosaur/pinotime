@@ -168,6 +168,10 @@ class StatusBar:
     def clock(self, enabled):
         self._clock.enabled = enabled
 
+    @property
+    def battery_level(self):
+        return self._meter.level
+
     def draw(self):
         """Redraw the status bar from scratch."""
         self._clock.draw()

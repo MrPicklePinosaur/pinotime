@@ -60,16 +60,23 @@ class TermClockApp():
         if the time on display has not changed. However if redraw is set to
         True then a full redraw is be performed.
         """
+
         draw = wasp.watch.drawable
-        hi =  wasp.system.theme('bright')
-        lo =  wasp.system.theme('mid')
-        mid = draw.lighten(lo, 1)
+        draw.set_font(fonts.source18) # size 18 font spacing 2
 
         if redraw:
             now = wasp.watch.rtc.get_localtime()
 
             # Clear the display and draw that static parts of the watch face
             draw.fill()
+            draw.set_color(0xffff)
+            draw.string(" pinotime_~> fetch", 0, 40)
+            draw.string('[TIME]', 0, 60)
+            draw.string('[DATE]', 0, 80)
+            draw.string('[BATT]', 0, 100)
+            draw.string('[STEP]', 0, 120)
+            draw.string('[HRTR]', 0, 140)
+            draw.string(" pinotime_~>", 0, 160)
 
             # Redraw the status bar
             wasp.system.bar.draw()
@@ -83,31 +90,30 @@ class TermClockApp():
                 # Skip the update
                 return
 
-        draw.set_font(fonts.sans18)
-        prompt = " pino_ ~ > fetch"
-        draw.string(prompt, 0, 40)
-
+        hor_off = fonts.source18.max_width()*7
         # Format the month as text
         month = now[1] - 1
         month = MONTH[month*3:(month+1)*3]
 
         # Draw the changeable parts of the watch face
         # this is really stupid rn
-        draw.set_color(0xf000)
-        draw.string('[TIME]: {}{}:{}{}'.format(
-            now[3]//10, now[3]%10, now[4]//10, now[4]%10),
-        0, 70)
-        draw.set_color(0xffff)
-        draw.string('[TIME]:', 0, 70)
+        draw.set_color(0xff00)
+        draw.string('{}{}:{}{}'.format(
+            now[3]//10, now[3]%10, now[4]//10, now[4]%10), hor_off, 60)
+
+        draw.set_color(0x0ff0)
+        draw.string('{} {} {}'.format(now[2], month, now[0]), hor_off, 80)
 
         draw.set_color(0x0f00)
-        draw.string('[DATE]: {} {} {}'.format(now[2], month, now[0]), 0, 100)
-        draw.set_color(0xffff)
-        draw.string('[DATE]:', 0, 100)
+        draw.string('{}%'.format(wasp.system.bar.battery_level), hor_off, 100)
+
+        draw.set_color(0xf0f0)
+        draw.string('1301 steps', hor_off, 120)
+
+        draw.set_color(0xf000)
+        draw.string('0 bpm', hor_off, 140)
 
         # Record the minute that is currently being displayed
         self._min = now[4]
 
-        prompt = " pino_ ~ >"
-        draw.string(prompt, 0, 130)
         
