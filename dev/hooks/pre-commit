@@ -1,0 +1,7 @@
+#!/bin/sh
+
+BOLD='\033[1;36m'
+NC='\033[0m'
+printf "${BOLD}[PRE-COMMIT:IGNORED]${NC} formatting code and linting...\n"
+# yapf --style=pep8 -i -r wasp
+# git add -u
