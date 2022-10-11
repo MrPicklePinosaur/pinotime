@@ -40,6 +40,7 @@ class SoftwareApp():
         y = 0
         db = []
         db.append(('matsunet', factory('MatsuNet')))
+        db.append(('hello', factory('Hello')))
         db.append(('alarm', factory('Alarm')))
         db.append(('calc', factory('Calculator')))
         db.append(('disaBLE', factory('DisaBLE')))
