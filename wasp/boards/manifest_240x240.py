@@ -26,7 +26,7 @@ manifest = (
     'apps/steps.py',
     'apps/stopwatch.py',
     'apps/snake.py',
-    'apps/termclock.py',
+    'apps/term_clock.py',
     'apps/testapp.py',
     'apps/timer.py',
     'apps/weather.py',
