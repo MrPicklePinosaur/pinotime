@@ -23,6 +23,8 @@ Watch faces
 
 .. automodule:: apps.word_clock
 
+.. automodule:: apps.term_clock
+
 Built-in
 --------
 
