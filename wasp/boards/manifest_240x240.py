@@ -15,6 +15,7 @@ manifest = (
     'apps/gallery.py',
     'apps/haiku.py',
     'apps/heart.py',
+    'apps/matsunet.py',
     'apps/musicplayer.py',
     'apps/launcher.py',
     'apps/pager.py',
