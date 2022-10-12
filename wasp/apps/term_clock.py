@@ -68,7 +68,7 @@ class TermClockApp():
         """
 
         draw = wasp.watch.drawable
-        draw.set_font(fonts.source18) # size 18 font spacing 2
+        draw.set_font(fonts.sans18) # size 18 font spacing 2
 
         if redraw:
             now = wasp.watch.rtc.get_localtime()
@@ -96,7 +96,7 @@ class TermClockApp():
                 # Skip the update
                 return
 
-        hor_off = fonts.source18.max_width()*7
+        hor_off = fonts.sans18.max_width()*4
         # Format the month as text
         month = now[1] - 1
         month = MONTH[month*3:(month+1)*3]

@@ -27,8 +27,8 @@ class FacesApp():
         choices.append(('week_clock', 'WeekClock'))
         choices.append(('chrono', 'Chrono'))
         choices.append(('dual_clock', 'DualClock'))
-        choices.append(('fibonacci_clock', 'FibonacciClock'))
-        choices.append(('word_clock', 'WordClock'))
+        # choices.append(('fibonacci_clock', 'FibonacciClock'))
+        # choices.append(('word_clock', 'WordClock'))
         choices.append(('term_clock', 'TermClock'))
 
         self.choices = choices
