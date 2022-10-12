@@ -1,6 +1,16 @@
 # SPDX-License-Identifier: MY-LICENSE
 # Copyright (C) YEAR(S), AUTHOR
 
+"""MatsuNet
+~~~~~~~~~~~~~~~
+
+Control devices using smartwatch.
+
+    .. figure:: res/MatsuNetApp.png
+        :width: 179
+
+"""
+
 import wasp
 import icons
 

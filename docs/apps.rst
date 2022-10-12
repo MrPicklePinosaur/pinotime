@@ -73,6 +73,8 @@ Applications
 
 .. automodule:: apps.weather
 
+.. automodule:: apps.matsunet
+
 Games
 -----
 
