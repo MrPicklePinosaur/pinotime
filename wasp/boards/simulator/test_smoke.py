@@ -32,9 +32,9 @@ def test_step(system):
 
 def test_quick_ring(system):
     names = [ x.NAME for x in system.quick_ring ]
-    assert('Clock' in names)
+    assert('TermClock' in names)
+    assert('Music' in names)
     assert('Steps' in names)
-    assert('Stopclock' in names)
     assert('Heart' in names)
 
 def test_launcher_ring(system):
@@ -43,7 +43,7 @@ def test_launcher_ring(system):
     assert('Software' in names)
 
 @pytest.mark.parametrize("name",
-        ('Steps', 'Stopclock', 'Heart', 'Settings', 'Software'))
+        ('Steps', 'Heart', 'Settings', 'Software'))
 def test_app(system, name):
     system.switch(system.apps[name])
     for i in range(4):
@@ -74,6 +74,7 @@ def test_constructor(system, constructor):
         if 'HaikuApp' not in str(constructor):
             raise
 
+'''
 def test_stopwatch(system):
     system.switch(system.apps['Stopclock'])
 
@@ -94,6 +95,7 @@ def test_stopwatch(system):
     wasp.watch.button.value(1)
 
     system.step()
+'''
 
 def test_selftests(system):
     """Walk though each screen in the Self Test.

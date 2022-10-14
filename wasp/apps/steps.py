@@ -135,6 +135,8 @@ class StepCounterApp():
         draw.set_color(draw.lighten(wasp.system.theme('spot1'), wasp.system.theme('contrast')))
         draw.string(t, 228-w, 132-18)
 
+        wasp.system.step_count = count
+
     def _update_graph(self):
         draw = watch.drawable
         draw.set_font(fonts.sans24)
@@ -175,3 +177,4 @@ class StepCounterApp():
                 draw.fill(color, x, 239-d, 1, d)
 
         draw.string(str(total), 239-160, 0, 160, right=True)
+

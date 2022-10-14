@@ -77,12 +77,13 @@ class TermClockApp():
             draw.fill()
             draw.set_color(0xffff)
             draw.string("watch > fetch", 0, 40)
-            draw.string('[TIME]', 0, 60)
-            draw.string('[DATE]', 0, 80)
-            draw.string('[BATT]', 0, 100)
-            draw.string('[STEP]', 0, 120)
-            draw.string('[HRTR]', 0, 140)
-            draw.string("watch >", 0, 160)
+            draw.string('[USER]', 0, 60)
+            draw.string('[TIME]', 0, 80)
+            draw.string('[DATE]', 0, 100)
+            draw.string('[BATT]', 0, 120)
+            draw.string('[STEP]', 0, 140)
+            draw.string('[HRTR]', 0, 160)
+            draw.string("watch >", 0, 180)
 
             # Redraw the status bar
             wasp.system.bar.draw()
@@ -103,23 +104,28 @@ class TermClockApp():
 
         # Draw the changeable parts of the watch face
         # this is really stupid rn
+        draw.set_color(0x00f0)
+        draw.string('pinosaur', hor_off, 60)
+
         draw.set_color(0xff00)
         draw.string('{}{}:{}{}'.format(
-            now[3]//10, now[3]%10, now[4]//10, now[4]%10), hor_off, 60)
+            now[3]//10, now[3]%10, now[4]//10, now[4]%10), hor_off, 80)
 
         draw.set_color(0x0ff0)
-        draw.string('{} {} {}'.format(now[2], month, now[0]), hor_off, 80)
+        draw.string('{} {} {}'.format(now[2], month, now[0]), hor_off, 100)
 
-        # draw.set_color(0x0f00)
-        # draw.string('{}%'.format(wasp.system.bar.battery_level), hor_off, 100)
+        # TODO update battery level in real time?
+        draw.set_color(0x0f00)
+        draw.string('{}%'.format(wasp.system.bar.battery_level), hor_off, 120)
 
         draw.set_color(0xf0f0)
-        draw.string('1301 steps', hor_off, 120)
+        step_str = '~' if wasp.system.step_count is None else str(wasp.system.step_count)
+        draw.string('{} steps'.format(step_str), hor_off, 140)
 
         draw.set_color(0xf000)
-        draw.string('0 bpm', hor_off, 140)
+        bpm_str = '~' if wasp.system.bpm is None else wasp.system.bpm
+        draw.string('{} bpm'.format(bpm_str), hor_off, 160)
 
         # Record the minute that is currently being displayed
         self._min = now[4]
 
-        

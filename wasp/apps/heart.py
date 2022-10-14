@@ -74,8 +74,11 @@ class HeartApp():
 
         if len(self._hrdata.data) >= 240:
             draw.set_color(wasp.system.theme('bright'))
-            draw.string('{} bpm'.format(self._hrdata.get_heart_rate()),
+            heart_rate = self._hrdata.get_heart_rate()
+            draw.string('{} bpm'.format(heart_rate),
                         0, 6, width=240)
+
+            wasp.system.bpm = heart_rate
 
         # Graph is orange by default...
         color = wasp.system.theme('spot1')
